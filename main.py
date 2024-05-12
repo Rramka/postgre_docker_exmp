@@ -15,7 +15,9 @@ data = {
 # Create a DataFrame from the dictionary
 df = pd.DataFrame(data)
 
-print(df)    #dfgdfgd
+
+print(df)
+
 
 # time.sleep(30)
 
