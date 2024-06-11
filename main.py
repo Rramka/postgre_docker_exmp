@@ -6,17 +6,17 @@ import time
 
 # /////////////     panda      /////////////////
 
-data = {
-  "Name": ["Alice", "Bob", "Charlie"],
-  "Age": [25, 30, 28],
-  "City": ["New York", "Los Angeles", "Chicago"]
-}
+# data = {
+#   "Name": ["Alice", "Bob", "Charlie"],
+#   "Age": [25, 30, 28],
+#   "City": ["New York", "Los Angeles", "Chicago"]
+# }
 
-# Create a DataFrame from the dictionary
-df = pd.DataFrame(data)
+# # Create a DataFrame from the dictionary
+# df = pd.DataFrame(data)
 
 
-print(df)
+# print(df)
 
 
 # time.sleep(30)
@@ -24,23 +24,23 @@ print(df)
 
 # /////////////     posgres      /////////////////
 
-DB_HOST = "postgres_db"
-DB_PORT = 5432
-DB_USER = "postgres"
-DB_PASSWORD = "postgres"
-DB_NAME = "postgres"
+# DB_HOST = "0.0.0.0"
+# DB_PORT = 7777
+# DB_USER = "postgres"
+# DB_PASSWORD = "postgres"
+# DB_NAME = "postgres"
 
-# connection_string = f"postgresql+psycopg2://{DB_USER}:{DB_PASSWORD}@{DB_HOST}:{DB_PORT}/{DB_NAME}"
+# connection_string = f"postgresql://{DB_USER}:{DB_PASSWORD}@{DB_HOST}:{DB_PORT}/{DB_NAME}"
 
-# engine = create_engine(connection_string)
+
+# engine = create_engine(connection_string,pool_pre_ping=True)
 # conn = engine.connect()
-
 
 conn = psycopg2.connect(database = "postgres", 
                         user = "postgres", 
                         host= 'postgres_db',
                         password = "postgres",
-                        port = 5432)
+                        port = 7777)
 
 
 # # Open a cursor to perform database operations
@@ -48,10 +48,12 @@ cur = conn.cursor()
 # # Execute a command: 
 cur.execute("""select * from pg_catalog.pg_tables ; """)
 print(cur.fetchall())
-cur.execute("create table test(id int)")
-cur.execute("insert into test values(1)")
-cur.execute("select * from test")
-print(cur.fetchall())
+# cur.execute("create table test(id int)")
+# cur.execute("insert into test values(1)")
+# cur.execute("select * from test")
+# print(cur.fetchall())
+
+
 
 # # Make the changes to the database persistent
 conn.commit()
